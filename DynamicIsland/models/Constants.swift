@@ -1280,6 +1280,12 @@ extension Defaults.Keys {
     
     // MARK: Stats Feature
     static let enableStatsFeature = Key<Bool>("enableStatsFeature", default: false)
+    // MARK: Thermal Pressure
+    static let enableThermalPressureAlerts = Key<Bool>("enableThermalPressureAlerts", default: true)
+    /// -1 = read the real level; 0...4 forces a level for testing
+    static let thermalPressureDebugOverride = Key<Int>("thermalPressureDebugOverride", default: -1)
+    static let thermalThrottledDay = Key<String>("thermalThrottledDay", default: "")
+    static let thermalThrottledSecondsToday = Key<Double>("thermalThrottledSecondsToday", default: 0)
     static let enableLLMUsageFeature = Key<Bool>("enableLLMUsageFeature", default: false)
     static let enableClaudeProvider = Key<Bool>("enableClaudeProvider", default: true)
     static let enableCodexProvider = Key<Bool>("enableCodexProvider", default: true)

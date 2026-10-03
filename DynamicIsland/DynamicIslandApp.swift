@@ -708,6 +708,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         LockScreenManager.shared.configure(viewModel: vm)
         extensionXPCServiceHost.start()
         extensionRPCServer.start()
+        ThermalPressureMonitor.shared.start()
         
         // Migrate legacy progress bar settings
         Defaults.Keys.migrateProgressBarStyle()

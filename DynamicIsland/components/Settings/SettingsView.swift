@@ -8032,6 +8032,11 @@ struct StatsSettings: View {
                 }
                 .settingsHighlight(id: highlightID("Enable LLM Usage Monitor"))
 
+                Defaults.Toggle(key: .enableThermalPressureAlerts) {
+                    Text("Isı baskısı uyarısı (Mac yavaşlatılınca çentikte göster)")
+                }
+                .settingsHighlight(id: highlightID("Isı baskısı uyarısı"))
+
             } header: {
                 Text("General")
             } footer: {

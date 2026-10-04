@@ -353,11 +353,15 @@ struct BatteryMenuView: View {
         .padding()
         .frame(width: 280)
         .foregroundStyle(.primary)
-        // Atoll never becomes the active app, so this popover's window stays
-        // inactive and AppKit draws its vibrant labels in the dimmed,
-        // inactive style — barely readable over a light wallpaper. The menu
-        // is interactive, so render it as active.
-        .environment(\.controlActiveState, .key)
+        // The popover's glass follows the system appearance, but its content
+        // inherits the notch's environment. In light mode that left light
+        // text on a light popover, barely readable. Match the system so the
+        // text and the popover background always contrast.
+        .environment(\.colorScheme, Self.systemColorScheme)
+    }
+
+    private static var systemColorScheme: ColorScheme {
+        NSApp.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua]) == .darkAqua ? .dark : .light
     }
 
     private func openBatteryPreferences() {

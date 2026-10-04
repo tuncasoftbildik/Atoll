@@ -349,6 +349,11 @@ struct BatteryMenuView: View {
         .padding()
         .frame(width: 280)
         .foregroundStyle(.primary)
+        // Atoll never becomes the active app, so this popover's window stays
+        // inactive and AppKit draws its vibrant labels in the dimmed,
+        // inactive style — barely readable over a light wallpaper. The menu
+        // is interactive, so render it as active.
+        .environment(\.controlActiveState, .key)
     }
 
     private func openBatteryPreferences() {
